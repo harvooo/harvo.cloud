@@ -4,10 +4,6 @@ body {
   padding: 0;
   background-color: #282828;
   color: #fff;
-  background-image: url('back.png');
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
   height: 100vh;
 }
 
