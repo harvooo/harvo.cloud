@@ -1,0 +1,69 @@
+body {
+  font-family: 'Rubik', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #282828;
+  color: #fff;
+  background-image: url('back.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+
+#myHeader h1,
+#myHeader nav {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+#myHeader.fade-in h1,
+#myHeader.fade-in nav {
+  opacity: 1;
+}
+
+
+header {
+  display: flex;
+  align-items: center;
+  padding: 50px;
+}
+
+.profile-picture img {
+  border-radius: 50%;
+}
+
+.header-content {
+  margin-left: 20px;
+}
+
+h1 {
+  display: flex;
+  align-items: center;
+}
+
+
+main {
+  padding-left: 200px;
+}
+
+section {
+  margin-bottom: 30px;
+}
+
+h2 {
+  font-family: 'Rubik', Arial, sans-serif;
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+  color: #3498db;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #2980b9;
+}
