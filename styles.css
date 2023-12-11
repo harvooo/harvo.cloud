@@ -16,15 +16,15 @@ body {
   }
 }
 
-/* Apply the animation to the <p> element */
+
 p {
-  opacity: 0; /* Set initial opacity to 0 */
-  animation: fadeIn 1s ease-in-out forwards; /* Animation properties */
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out forwards;
 }
 
 img {
-  opacity: 0; /* Set initial opacity to 0 */
-  animation: fadeIn 1s ease-in-out forwards; /* Animation properties */
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out forwards;
 }
 
 
