@@ -41,6 +41,10 @@ img {
 
 
 header {
+  opacity: 0;
+  animation: fadeIn 0.3s ease-in-out forwards;
+  animation-delay: 0.3s;
+  transition: all 0.3s ease-in-out;
   display: flex;
   align-items: center;
   padding: 50px;
@@ -61,7 +65,7 @@ h1 {
 
 
 main {
-  padding-left: 200px;
+  padding-left: 55px;
 }
 
 section {
@@ -82,4 +86,34 @@ a {
 a:hover {
   text-decoration: underline;
   color: #2980b9;
+}
+
+.button {
+  display: inline-block;
+  padding: 5px 15px;
+  margin-top: 2px;
+  border: 2px solid #fff;
+  border-radius: 10px;
+  background-color: #282828;
+  color: #fff;
+  font-family: 'Rubik', Arial, sans-serif;
+  font-weight: 700;
+  text-decoration: none;
+  opacity: 0;
+  animation: fadeIn 0.3s ease-in-out forwards;
+  animation-delay: 0.3s;
+  transition: all 0.3s ease-in-out;
+}
+
+.button:hover {
+  background-color: transparent;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.toolsHeader {
+  opacity: 0;
+  animation: fadeIn 0.3s ease-in-out forwards;
+  animation-delay: 0.3s;
+  transition: all 0.3s ease-in-out;
 }
