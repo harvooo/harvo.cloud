@@ -1,0 +1,196 @@
+<h2>Core Concepts</h2>
+
+<h3>1. Algorithmic Complexity (Week 1)</h3>
+
+<ul>
+    <li><strong>What is an Algorithm?</strong> A sequence of instructions to convert input to output; a computational procedure.</li>
+    <li><strong>Why Analyze Algorithms?</strong>
+        <ul>
+            <li>Predict performance (how long will it take?).</li>
+            <li>Compare different algorithms (which is faster/uses less memory?).</li>
+            <li>Avoid performance bugs.</li>
+        </ul>
+    </li>
+    <li><strong>Algorithmic Efficiency:</strong> Focuses on how running time and memory usage scale with the <em>size of the input</em> (denoted as <em>N</em>).</li>
+    <li><strong>Scientific Method:</strong> We <em>observe</em> program behavior, <em>hypothesize</em> a model for runtime, <em>predict</em> performance, and <em>verify</em> through more observations.</li>
+    <li><strong>Mathematical Models:</strong>
+        <ul>
+            <li><strong>Cost Model:</strong> Focus on the most frequent/expensive operation (e.g., array access, comparison).</li>
+            <li><strong>Tilde Notation (~):</strong> Simplify by keeping only the <em>highest-order term</em> (e.g., <code>3N² + 2N ~ N²</code>). We ignore lower-order terms and constant coefficients.</li>
+        </ul>
+    </li>
+    <li><strong>Order of Growth:</strong> Describes how runtime scales with input size. Common orders (from fastest to slowest):
+        <ul>
+            <li><code>1</code> (Constant): Runtime is independent of input size.</li>
+            <li><code>log N</code> (Logarithmic): Runtime grows slowly as input size increases (e.g., binary search).</li>
+            <li><code>N</code> (Linear): Runtime grows proportionally to input size.</li>
+            <li><code>N log N</code> (Linearithmic): Common in divide-and-conquer algorithms (e.g., merge sort).</li>
+            <li><code>N²</code> (Quadratic): Runtime grows proportionally to the square of input size (e.g., nested loops checking all pairs).</li>
+            <li><code>N³</code> (Cubic): Runtime grows proportionally to the cube of input size (e.g., triple nested loops).</li>
+            <li><code>2^N</code> (Exponential): Runtime doubles with each additional input element (very slow for large inputs).</li>
+        </ul>
+    </li>
+    <li><strong>Big-O Notation (O):</strong> Describes the <em>upper bound</em> (worst-case) complexity. Provides a <em>guarantee</em> on performance. We focus on this most often.</li>
+    <li><strong>Big-Omega Notation:</strong> Describes the lower bound of the complexity or the best-case scenario.</li>
+    <li><strong>Big-Theta Notation:</strong> Describes the asymptotic order of growth if best and worst cases grow similarly.</li>
+    <li><strong>Best, Worst, and Average Case:</strong>
+        <ul>
+            <li><strong>Best Case:</strong> The fastest possible runtime for a given input (often not very useful).</li>
+            <li><strong>Worst Case:</strong> The slowest possible runtime (provides a performance guarantee). <em>Primary focus</em>.</li>
+            <li><strong>Average Case:</strong> The expected runtime for a "random" input (requires assumptions about input distribution).</li>
+        </ul>
+    </li>
+</ul>
+
+<h3>2. Searching Algorithms (Week 2)</h3>
+
+<ul>
+    <li><strong>Linear Search:</strong>
+        <ul>
+            <li>Checks each element sequentially.</li>
+            <li>Simple but inefficient.</li>
+            <li>Best Case: <code>O(1)</code> (item found immediately).</li>
+            <li>Worst/Average Case: <code>O(N)</code> (must check every element).</li>
+        </ul>
+    </li>
+    <li><strong>Binary Search:</strong>
+        <ul>
+            <li><em>Requires a sorted array</em>.</li>
+            <li>Repeatedly divides the search interval in half.</li>
+            <li>Much more efficient than linear search for large, sorted data.</li>
+            <li>Best Case: <code>O(1)</code> (item found in the middle).</li>
+            <li>Worst/Average Case: <code>O(log N)</code> (number of times you can halve the input size).</li>
+        </ul>
+    </li>
+</ul>
+
+<h3>3. Sorting Algorithms (Weeks 2 & 3)</h3>
+
+<ul>
+    <li><strong>Why Sort?</strong> Many problems become easier/faster with sorted data (e.g., searching).</li>
+    <li><strong>Fundamental Operations:</strong> Sorting algorithms primarily involve <em>comparisons</em> and <em>data movements</em> (swaps).</li>
+    <li><strong>"Simple" Sorting Algorithms (O(N²) Complexity):</strong> Generally inefficient for large datasets.
+        <ul>
+            <li><strong>Selection Sort:</strong>
+                <ul>
+                    <li>Finds the smallest (or largest) element and places it in its correct position, repeating for the remaining unsorted portion.</li>
+                    <li>Few swaps (good if data movement is expensive).</li>
+                    <li>Worst/Average/Best Case: <code>O(N²)</code>. The best case is slightly misleading; it still <em>does</em> <code>O(N²)</code> comparisons.</li>
+                </ul>
+            </li>
+            <li><strong>Insertion Sort:</strong>
+                <ul>
+                    <li>Builds a sorted portion of the array one element at a time, inserting each new element into its correct position within the sorted part.</li>
+                    <li>Efficient for <em>nearly sorted</em> data.</li>
+                    <li>Best Case: <code>O(N)</code> (if the array is already sorted).</li>
+                    <li>Worst/Average Case: <code>O(N²)</code>.</li>
+                </ul>
+            </li>
+            <li><strong>Bubble Sort:</strong>
+                <ul>
+                    <li>Repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order. Larger elements "bubble" to the end.</li>
+                    <li>Generally inefficient; mainly of theoretical interest.</li>
+                    <li>Worst/Average/Best Case: <code>O(N²)</code></li>
+                </ul>
+            </li>
+            <li><strong>Shell Sort:</strong>
+                <ul>
+                    <li>Diminishing increment sort, is an in-place comparison sort. It can be seen as either a generalization of sorting by exchange (bubble sort) or sorting by insertion (insertion sort).</li>
+                    <li>Best Case: <code>O(N log N)</code>.</li>
+                    <li>Worst Case: <code>O(N^2)</code>.</li>
+                    <li>Average Case: Depends on the gap.</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<h3>4. Advanced Sorting Algorithms (Week 4)</h3>
+
+<ul>
+    <li><strong>Merge Sort:</strong>
+        <ul>
+            <li>Splits in half, sort recursively, and merge the halves.</li>
+            <li>Comparisons of best, average and worst case is <code>O(N log N)</code>.</li>
+            <li>Assignments for the best and worst case is <code>2N</code>.</li>
+        </ul>
+    </li>
+    <li><strong>Quick Sort:</strong>
+        <ul>
+            <li>Select pivot, generate 2 sub-collections, repeat step 1.</li>
+            <li>Best Case: <code>O(N log N)</code>.</li>
+            <li>Worst Case: <code>O(N^2)</code>.</li>
+        </ul>
+    </li>
+</ul>
+
+<h3>5. Abstract Data Types (ADTs) and Data Structures (Week 5)</h3>
+
+<ul>
+    <li><strong>Data Structure:</strong> An object that stores data and supports specific operations on that data.</li>
+    <li><strong>Abstract Data Type (ADT):</strong> A <em>specification</em> of a data structure. It defines <em>what</em> operations are supported, but <em>not how</em> they are implemented. This separation of interface and implementation is key.</li>
+    <li><strong>Contiguous vs. Linked Data Structures:</strong>
+        <ul>
+            <li><strong>Contiguous:</strong> Use adjacent memory locations (e.g., arrays, stacks, queues).</li>
+            <li><strong>Linked:</strong> Use non-adjacent memory locations connected by pointers (e.g., linked lists, trees – covered later).</li>
+        </ul>
+    </li>
+    <li><strong>Arrays:</strong>
+        <ul>
+            <li>Contiguous memory.</li>
+            <li><code>O(1)</code> (constant-time) access to any element by index (random access).</li>
+            <li>Fixed size (traditionally).</li>
+            <li><strong>Dynamic Arrays:</strong> Can grow in size, but resizing has a cost (copying elements). Python lists are dynamic arrays.</li>
+        </ul>
+    </li>
+    <li><strong>Stacks:</strong>
+        <ul>
+            <li><strong>LIFO (Last-In, First-Out)</strong> order. Think of a stack of plates.</li>
+            <li>Key Operations:
+                <ul>
+                    <li><code>push(item)</code>: Add an item to the top.</li>
+                    <li><code>pop()</code>: Remove and return the top item.</li>
+                    <li><code>isEmpty()</code>: Check if the stack is empty.</li>
+                    <li><code>size()</code>: Return the number of items.</li>
+                    <li><code>clear()</code>: Remove all items.</li>
+                </ul>
+            </li>
+            <li>Applications: Function call stack (recursion), undo/redo, expression evaluation, bracket matching.</li>
+            <li>Implementation: Can be implemented using arrays (with a "top" pointer) or linked lists.</li>
+        </ul>
+    </li>
+    <li><strong>Queues:</strong>
+        <ul>
+            <li><strong>FIFO (First-In, First-Out)</strong> order. Think of a line at a store.</li>
+            <li>Key Operations:
+                <ul>
+                    <li><code>enqueue(item)</code>: Add an item to the rear (tail).</li>
+                    <li><code>dequeue()</code>: Remove and return the item at the front (head).</li>
+                    <li><code>isEmpty()</code>: Check if the queue is empty.</li>
+                    <li><code>size()</code>: Return the number of items.</li>
+                </ul>
+            </li>
+            <li>Applications: Print queues, task scheduling, handling asynchronous events, breadth-first search (later).</li>
+            <li>Implementation:
+                <ul>
+                    <li><strong>Flat Array:</strong> Simple, but requires shifting elements on dequeue (inefficient).</li>
+                    <li><strong>Circular Array:</strong> More efficient. Uses modulo arithmetic (<code>%</code>) to wrap around the array indices, avoiding the need to shift elements. Both <code>front</code> and <code>rear</code> pointers move.</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li><strong>Pre/Post conditions:</strong> An ADT can use pre and post conditions for member functions.</li>
+</ul>
+
+<h3>6. Applications (Examples)</h3>
+
+<ul>
+    <li><strong>Palindrome Check:</strong> Use a stack and a queue to efficiently check if a word is a palindrome.</li>
+    <li><strong>Bracket Matching:</strong> Use a stack to ensure that opening and closing brackets in code are balanced.</li>
+    <li><strong>Infix/Postfix Expression Evaluation:</strong>
+        <ul>
+            <li><strong>Infix:</strong> Standard mathematical notation (e.g., <code>2 + (3 * 4)</code>).</li>
+            <li><strong>Postfix (Reverse Polish Notation):</strong> Operators follow their operands (e.g., <code>2 3 4 * +</code>). Easier to evaluate using a stack (no need for parentheses). A two-stack algorithm can be used.</li>
+        </ul>
+    </li>
+</ul>

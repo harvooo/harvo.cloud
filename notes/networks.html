@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COM320 Computer Networks and Operating Systems: Summary (Weeks 1-6)</title>
+</head>
+<body>
+
+<h1>COM320 Computer Networks and Operating Systems: Summary (Weeks 1-6)</h1>
+
+<p>This summary covers key concepts from the first six weeks of the COM320 Computer Networks and Operating Systems module, focusing on material relevant to the class test. It does <em>not</em> include everything, but aims to be a concise, helpful revision guide.</p>
+
+<h2>Week 1: Introduction to Networks</h2>
+
+<h3>Key Concepts:</h3>
+<ul>
+    <li><strong>Network Definition:</strong> Two or more computers (or devices) connected to share resources (files, printers, internet access, etc.).</li>
+    <li><strong>Internet vs. Web:</strong> The <em>Internet</em> is the underlying physical infrastructure (wires, routers, satellites). The <em>Web</em> (World Wide Web, WWW) is a <em>service</em> that runs on the Internet, using HTTP/HTTPS to access websites. Other internet services include Email, APIs and mobile apps.</li>
+    <li><strong>Packet Switching:</strong> The fundamental method of data transmission on the Internet. Messages are broken into <em>packets</em>, which are routed independently and reassembled at the destination. This contrasts with <em>circuit switching</em> (used in traditional telephone networks), where a dedicated path is established.</li>
+    <li><strong>Protocols:</strong> Rules that govern how data is transmitted and received on a network. Examples include:
+        <ul>
+            <li><strong>HTTP/HTTPS:</strong> Hypertext Transfer Protocol (Secure). Used for web browsing.</li>
+            <li><strong>TCP/IP:</strong> Transmission Control Protocol/Internet Protocol. The core protocols of the Internet.</li>
+            <li><strong>UDP:</strong> User Datagram Protocol. A faster, less reliable alternative to TCP.</li>
+            <li><strong>DNS:</strong> Domain Name System- translates human-readable domain names (e.g., www.example.com) into IP addresses.</li>
+            <li><strong>DHCP:</strong> Dynamic Host Configuration Protocol. Automatically assigns IP addresses to devices on a network.</li>
+            <li><strong>ARP:</strong> Address Resolution Protocol. Maps IP addresses to MAC addresses (physical hardware addresses) on a local network.</li>
+            <li><strong>ICMP:</strong> Internet Control Message Protocol, used for error reporting, ping and traceroute.</li>
+        </ul>
+    </li>
+    <li><strong>MAC Address:</strong> Physical address, used in the data link layer, A 48-bit unique identifier assigned to network interface cards (NICS).</li>
+    <li><strong>Wireshark:</strong> A packet analyzer (sniffer) used to inspect network traffic.</li>
+</ul>
+
+<h3>Key Ideas:</h3>
+<ul>
+    <li>The Internet is a "network of networks," with interconnected ISPs (Internet Service Providers).</li>
+    <li>Routers forward packets between networks.</li>
+    <li>Protocols are essential for ensuring reliable and efficient communication.</li>
+</ul>
+
+<h2>Week 2: The Data Link Layer</h2>
+
+<h3>Key Concepts:</h3>
+<ul>
+    <li><strong>Data Link Layer Responsibilities:</strong> Handles transmission of <em>frames</em> (data units at the link layer) over a <em>single</em> link. Deals with:
+        <ul>
+            <li><strong>Framing:</strong> Dividing the bit stream into discrete frames. Methods include byte count, flag bytes with byte stuffing, flag bits with bit stuffing, and physical layer coding violations.</li>
+            <li><strong>Error Control:</strong> Detecting and correcting errors that occur during transmission. This is accomplished by calculating check bits (syndrome) and parity sums to flip the bit error, interleaving to detect burst errors.</li>
+            <li><strong>Flow Control:</strong> Preventing a fast sender from overwhelming a slow receiver.</li>
+        </ul>
+    </li>
+    <li><strong>MAC Addresses:</strong> Media Access Control addresses are <em>physical</em> addresses used to identify devices on a local network (e.g., Ethernet, Wi-Fi). They are different from IP addresses.</li>
+    <li><strong>ARP (Address Resolution Protocol):</strong> Resolves IP addresses to MAC addresses on a local network. A device broadcasts an ARP request ("Who has IP address X?"), and the device with that IP address responds with its MAC address.</li>
+    <li><strong>Hamming Distance:</strong> is the minimum bit flips to turn one valid codeword into any other valid one.</li>
+    <li><strong>FEC:</strong> Forward error correction.</li>
+    <li><strong>Hubs vs. Switches:</strong>
+        <ul>
+            <li><strong>Hubs:</strong> Simple devices that broadcast all received data to all connected devices. Create a single collision domain.</li>
+            <li><strong>Switches:</strong> More intelligent devices that learn which devices are connected to which ports and forward data only to the intended recipient. Create separate collision domains, improving performance.</li>
+        </ul>
+    </li>
+    <li><strong>ARQ:</strong> Automatic Repeat Request.</li>
+    <li><strong>PAR:</strong> Positive Acknowledgment with Retransmission.</li>
+</ul>
+
+<h3>Key Protocols:</h3>
+<ul>
+    <li><strong>ALOHA:</strong> A simple multiple access protocol. Pure ALOHA allows transmission at any time (leading to collisions). Slotted ALOHA improves efficiency by synchronizing transmissions.</li>
+    <li><strong>CSMA (Carrier Sense Multiple Access):</strong> Listens before transmitting to avoid collisions.
+        <ul>
+            <li><strong>CSMA/CD (Collision Detection):</strong> Used in classic Ethernet. Devices stop transmitting if they detect a collision.</li>
+        </ul>
+    </li>
+    <li><strong>Token Ring:</strong> A collision-free protocol where a special "token" is passed around a ring, and only the device holding the token can transmit.</li>
+</ul>
+
+<h2>Week 3: The Network Layer</h2>
+
+<h3>Key Concepts:</h3>
+<ul>
+    <li><strong>Network Layer Responsibilities:</strong> Routing <em>packets</em> (data units at the network layer) from source to destination, potentially across <em>multiple</em> networks.</li>
+    <li><strong>IP Addresses:</strong> Logical addresses used to identify devices on a network. Two main versions:
+        <ul>
+            <li><strong>IPv4:</strong> 32-bit addresses (e.g., 192.168.1.1). Uses dotted decimal notation. Address space exhaustion is a major problem.</li>
+            <li><strong>IPv6:</strong> 128-bit addresses (e.g., 2001:0db8:85a3::8a2e:0370:7334). Uses hexadecimal notation. Solves the address exhaustion problem and offers other improvements.</li>
+        </ul>
+    </li>
+    <li><strong>Subnetting:</strong> Dividing a network into smaller subnetworks. Uses a <em>subnet mask</em> to determine the network and host portions of an IP address.</li>
+    <li><strong>CIDR (Classless Inter-Domain Routing):</strong> Allows for flexible allocation of IP address blocks using a prefix length (e.g., /24). Replaced the older classful addressing system (Class A, B, C).</li>
+    <li><strong>NAT:</strong> Network Address Translation. Maps one external IP address to many internal IP addresses, conserving IPv4 addresses.</li>
+    <li><strong>BGP:</strong> Border Gateway Protocol, computes routes across interconnected, autonomous networks.</li>
+    <li><strong>Routing Algorithms:</strong> Determine the best path for packets to travel.
+        <ul>
+            <li><strong>Distance Vector Routing:</strong> Each router maintains a table of distances to all other routers, exchanging information with its neighbors.</li>
+            <li><strong>Link State Routing:</strong> Each router learns the entire network topology and uses Dijkstra's algorithm to compute shortest paths. (Used in OSPF).</li>
+        </ul>
+    </li>
+    <li><strong>Virtual LANs (VLANs):</strong> Splits on physical LAN into multiple logical LANs to ease management tasks.</li>
+</ul>
+
+<h3>Key Protocols:</h3>
+<ul>
+    <li><strong>IP (Internet Protocol):</strong> The core protocol of the network layer. Provides a <em>connectionless</em>, <em>best-effort</em> service.</li>
+    <li><strong>OSPF:</strong> Open Shortest Path First. Uses link-state routing.</li>
+</ul>
+
+<h2>Week 4: The Transport Layer</h2>
+
+<h3>Key Concepts:</h3>
+<ul>
+    <li><strong>Transport Layer Responsibilities:</strong> Provides end-to-end communication between <em>processes</em> (applications) running on different hosts.</li>
+    <li><strong>Ports:</strong> Used to identify specific applications or processes on a host. A port number is combined with an IP address to create a <em>socket</em> (e.g., 192.168.1.1:80).</li>
+    <li><strong>Multiplexing/Demultiplexing:</strong> The transport layer multiplexes data from multiple applications into a single stream for transmission and demultiplexes received data to the correct application.</li>
+</ul>
+
+<h3>Key Protocols:</h3>
+<ul>
+    <li><strong>TCP (Transmission Control Protocol):</strong> A <em>connection-oriented</em>, <em>reliable</em> protocol. Provides:
+        <ul>
+            <li><strong>Connection Establishment (Three-Way Handshake):</strong> SYN, SYN-ACK, ACK.</li>
+            <li><strong>Ordered Data Delivery:</strong> Uses sequence numbers.</li>
+            <li><strong>Error Detection and Correction:</strong> Uses checksums and retransmissions.</li>
+            <li><strong>Flow Control:</strong> Prevents a fast sender from overwhelming a slow receiver (using a <em>sliding window</em>).</li>
+            <li><strong>Congestion Control:</strong> Adapts to network congestion to avoid collapse.</li>
+        </ul>
+    </li>
+    <li><strong>UDP (User Datagram Protocol):</strong> A <em>connectionless</em>, <em>unreliable</em> protocol. Much simpler than TCP, and thus faster. Used for applications where some data loss is acceptable (e.g., streaming video, DNS).</li>
+    <li><strong>Stop-and-wait:</strong> A flow control method where the receiver returns a dummy frame when ready.</li>
+</ul>
+
+<h2>Week 5: The Physical Layer</h2>
+
+<h3>Key Concepts:</h3>
+<ul>
+    <li><strong>Physical Layer Responsibilities:</strong> Transmitting raw bits over a communication channel. Deals with:
+        <ul>
+            <li><strong>Physical Media:</strong> Wires (twisted pair, coaxial cable), fiber optic cable, wireless.</li>
+            <li><strong>Modulation:</strong> Converting digital bits into analog signals for transmission.</li>
+            <li><strong>Signal Properties:</strong> Bandwidth, attenuation, interference.</li>
+        </ul>
+    </li>
+    <li><strong>Bandwidth:</strong> The maximum rate of data transfer across a given path.</li>
+    <li><strong>Attenuation:</strong> Reduction of signal strength over distance.</li>
+    <li><strong>Electromagnetic Spectrum:</strong> Different bands have different uses, some are licensed, others are not.</li>
+</ul>
+
+<h3>Transmission Media:</h3>
+<ul>
+    <li><strong>Twisted Pair:</strong> Common in LANs and telephone lines. Twisting reduces interference. Categories (e.g., Cat 5e, Cat 6) define performance.</li>
+    <li><strong>Coaxial Cable ("Coax"):</strong> Used for cable TV and older Ethernet networks. Better shielding than twisted pair.</li>
+    <li><strong>Fiber Optic Cable:</strong> Uses light pulses to transmit data. Very high bandwidth, low signal loss. Used for long-distance, high-speed communication. Single-mode (core is narrow) and Multi-mode (core is larger, LEDs used).</li>
+    <li><strong>Wireless:</strong> Uses radio waves, microwaves, or infrared. Susceptible to interference and multipath fading.
+        <ul>
+            <li><strong>Radio:</strong> Penetrates buildings well, long distances.</li>
+            <li><strong>Microwave:</strong> Used for Wi-Fi, cellular networks, satellites.</li>
+            <li><strong>Infrared/Light:</strong> Line-of-sight.</li>
+        </ul>
+    </li>
+    <li><strong>Satellites:</strong>
+        <ul>
+            <li><strong>GEO (Geostationary):</strong> High orbit (35,000 km), fixed position relative to Earth. Used for broadcast and communication.</li>
+            <li><strong>LEO (Low Earth Orbit):</strong> Lower orbit, shorter delay. Used for satellite constellations like Starlink.</li>
+        </ul>
+    </li>
+</ul>
+
+<h3>Modulation and Multiplexing:</h3>
+<ul>
+    <li><strong>Modulation:</strong> The process of using signals to represent data.</li>
+    <li><strong>Baseband Transmission:</strong> Uses line codes to represent bits as voltage levels.
+        <ul>
+            <li><strong>NRZ (Non-Return to Zero):</strong> Simple, but susceptible to clock recovery problems.</li>
+            <li><strong>Manchester Encoding:</strong> Includes a transition in the middle of each bit period, aiding clock recovery.</li>
+        </ul>
+    </li>
+    <li><strong>Passband Transmission:</strong> Modulates a carrier signal (amplitude, frequency, or phase).</li>
+    <li><strong>Clock Recovery:</strong> Decoding the symbols in the signals, Manchester encoding is used here.</li>
+    <li><strong>QPSK:</strong> Quadrature Phase Shift Keying.</li>
+    <li><strong>Multiplexing:</strong> Sharing a single communication channel among multiple users.
+        <ul>
+            <li><strong>FDM (Frequency Division Multiplexing):</strong> Divides the channel into different frequency bands.</li>
+            <li><strong>TDM (Time Division Multiplexing):</strong> Divides the channel into time slots.</li>
+            <li><strong>OFDM:</strong> Orthogonal Frequency Division Multiplexing. Used in modern wireless and wired networks.</li>
+        </ul>
+    </li>
+</ul>
+
+<h2>Week 6: Application Layer & Network Security</h2>
+<ul>
+    <li><strong>DNS:</strong> Domain Name System. Translates Domain names into IP addresses.</li>
+    <li><strong>DHCP:</strong> Dynamic Host Configuration Protocol. Automatically assigns IP addresses.</li>
+    <li><strong>VLANs:</strong> Virtual Local Area Networks. Groups devices on a LAN based on function, not wiring.</li>
+    <li><strong>ARP:</strong> Address Resolution Protocol. Finds MAC address from IP address.</li>
+</ul>
+
+<h3>Network Security:</h3>
+<ul>
+    <li><strong>Denial of Service (DoS) attacks:</strong> Overwhelm a target with traffic, making it unavailable.</li>
+    <li><strong>Packet Sniffing:</strong> Capturing and analyzing network traffic. Wireshark is a tool for this.</li>
+    <li><strong>IP Spoofing:</strong> Sending packets with a forged source IP address.</li>
+    <li><strong>ARP Spoofing:</strong> Attackers send fake ARP messages onto a LAN to associate the attacker's MAC address with the IP address of another host, leading to traffic redirection.</li>
+    <li><strong>ARP Cache Poisoning:</strong> Similar to spoofing, this involves filling the ARP cache with incorrect entries.</li>
+</ul>
+
+<ul>
+    <li><strong>Congestion Control:</strong>
+        <ul>
+            <li>Traffic-Aware Routing: Choose routes depending on traffic.</li>
+            <li>Admission Control: Limit new connections if network is near capacity.</li>
+            <li>Traffic Throttling: Signal hosts to slow down, ECN (Explicit Congestion Notification) marks packets.</li>
+            <li>Load Shedding: Drop packets when necessary.</li>
+        </ul>
+    </li>
+    <li><strong>QoS:</strong> Quality of Service.</li>
+</ul>
+</body>
+</html>
